@@ -1,0 +1,13 @@
+[package]
+name = "cozo-repo"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+async-trait = { workspace = true }
+serde = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+tokio = { workspace = true }
+nostr-model = { path = "../nostr-model" }
+graph-cozo = { path = "../graph-cozo" }

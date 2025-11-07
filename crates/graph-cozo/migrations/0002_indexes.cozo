@@ -1,0 +1,24 @@
+// Indexes and keys to improve query performance and dedup guards
+
+// Events
+index event_id_index(id)
+index event_by_author(kind, pubkey, created_at, id)
+index event_time(created_at, id)
+
+// Tags
+index tag_index(name, value, event_id)
+
+// Derived edges
+index edge_follow_src(src, created_at)
+index edge_follow_dst(dst, created_at)
+index edge_mute_src(src, created_at)
+index edge_mute_dst(dst, created_at)
+index edge_report_src(src, created_at)
+index edge_report_dst(dst, created_at)
+index reaction_dst(dst_event, created_at)
+index reaction_src(src, created_at)
+
+// GraphRank artifacts
+index worldview_key(observer, context)
+index scorecard_index(observer, context, ts, subject)
+index grapevine_key(observer, context, ts)

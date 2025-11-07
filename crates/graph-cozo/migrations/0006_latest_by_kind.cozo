@@ -1,0 +1,9 @@
+// Materialized latest-by-kind window
+input latest_by_kind [
+  event_id: String,
+  kind: Int,
+  created_at: Int
+]
+
+// Suggested index for windowed queries by kind and recency
+index latest_by_kind_idx(kind, created_at)

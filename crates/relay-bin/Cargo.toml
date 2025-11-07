@@ -1,0 +1,14 @@
+[package]
+name = "relay-bin"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+relay-settings = { path = "../settings" }
+http-server = { path = "../http-server" }
+ws-server = { path = "../ws-server" }
+cozo-repo = { path = "../repo" }
+graph-cozo = { path = "../graph-cozo" }

@@ -1,0 +1,2 @@
+// Derivation verification: idempotent upsert for edges and reactions from recent events
+// This file documents the intent; verification is triggered by runtime job using the same derivation rules as initial insert.

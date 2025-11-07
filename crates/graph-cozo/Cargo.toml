@@ -1,0 +1,24 @@
+[package]
+name = "graph-cozo"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+async-trait = { workspace = true }
+tracing = { workspace = true }
+nostr-model = { path = "../nostr-model" }
+
+[features]
+# Enable Cozo engine by default
+default = ["cozo-native"]
+# Real Cozo integration feature (crate present, API may be gated in code)
+cozo-native = ["dep:cozo"]
+
+[dependencies.cozo]
+optional = true
+version = "0.7.6"
+default-features = false
+features = ["storage-sqlite", "rayon"]

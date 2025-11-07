@@ -1,0 +1,71 @@
+// Cozo initial schema
+
+// Base events
+input event [
+  id: String,           // 64-hex
+  kind: Int,
+  pubkey: String,       // 64-hex
+  created_at: Int,      // unix seconds
+  content: String,
+  sig: String,          // 128-hex
+  expires_at: Optional<Int>,
+  tags_json: String
+]
+
+// Tags flattened for query
+input tag [
+  event_id: String,
+  name: String,
+  value: String,
+  pos: Int
+]
+
+// Derived edges
+rel edge_follow(src: String, dst: String, ctx: String, created_at: Int)
+rel edge_mute(src: String, dst: String, created_at: Int)
+rel edge_report(src: String, dst: String, typ: String, created_at: Int)
+rel reaction(src: String, dst_event: String, emoji: Optional<String>, created_at: Int)
+
+// GraphRank artifacts
+input worldview [
+  observer: String,
+  context: String,
+  settings_json: String,
+  calculating_ts: Optional<Int>,
+  calculated_ts: Optional<Int>
+]
+
+input grapevine [
+  observer: String,
+  context: String,
+  ts: Int,
+  status_json: String,
+  expires: Optional<Int>
+]
+
+input rating [
+  observer: String,
+  context: String,
+  ts: Int,
+  rater: String,
+  ratee: String,
+  protocol: String,
+  score: Float,
+  confidence: Float,
+  dos: Optional<Int>
+]
+
+input scorecard [
+  observer: String,
+  context: String,
+  ts: Int,
+  subject: String,
+  score: Float,
+  confidence: Float,
+  interpretersums_json: String
+]
+
+// Index suggestions (Cozo will use declared keys if supported in your runtime)
+index event_by_author(kind, pubkey, created_at, id)
+index tag_index(name, value, event_id)
+index scorecard_index(observer, context, ts, subject)

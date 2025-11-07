@@ -1,0 +1,17 @@
+[package]
+name = "http-server"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tracing = { workspace = true }
+tokio = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+nostr-model = { path = "../nostr-model" }
+cozo-repo = { path = "../repo" }
+relay-settings = { path = "../settings" }
+graph-cozo = { path = "../graph-cozo" }
+axum = { version = "0.7" }
+tower-http = { version = "0.5", features = ["cors"] }

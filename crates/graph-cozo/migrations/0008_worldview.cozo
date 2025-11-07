@@ -1,0 +1,9 @@
+input worldview [
+  observer: String,
+  context: String,
+  settings_json: String,
+  calculating_ts: Int?,
+  calculated_ts: Int?
+]
+
+index worldview_pk(observer, context)

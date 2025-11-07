@@ -1,0 +1,9 @@
+// Materialized latest-by-author window
+input latest_by_author [
+  event_id: String,
+  pubkey: String,
+  created_at: Int
+]
+
+// Suggested index for windowed queries by author and recency
+index latest_by_author_idx(pubkey, created_at)

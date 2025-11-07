@@ -1,0 +1,5 @@
+// Remove duplicate events by id (keep the earliest created_at)
+?[id, min_created] := agg min(created_at) by id from (?[id, created_at] := event{id: id, created_at: created_at})
+:delete event { id: id, created_at: created_at } WHERE created_at > min_created
+
+// Optional: ensure tag rows exist for kept events where needed (best-effort no-op)

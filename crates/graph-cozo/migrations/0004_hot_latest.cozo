@@ -1,0 +1,13 @@
+// Materialized hot-path: latest events within a rolling window
+// Relation holds denormalized rows for quick reads
+input hot_latest [
+  event_id: String,
+  pubkey: String,
+  kind: Int,
+  created_at: Int
+]
+
+// Refresh logic (runnable):
+// 1) Delete rows older than a rolling window (e.g., 7 days)
+// 2) Insert recent events that are not already materialized
+// Note: The runtime will provide the cutoff timestamp as a parameter when composing scripts.
