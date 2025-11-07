@@ -1,0 +1,24 @@
+[workspace]
+members = [
+  "crates/nostr-model",
+  "crates/graph-cozo",
+  "crates/repo",
+  "crates/ws-server",
+  "crates/http-server",
+  "crates/settings",
+  "crates/relay-bin",
+  "crates/e2e"
+]
+resolver = "2"
+
+[workspace.package]
+edition = "2021"
+
+[workspace.dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "1"
+async-trait = "0.1"
+tokio = { version = "1", features = ["full"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["fmt", "env-filter"] }
